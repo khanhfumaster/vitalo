@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   	get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 	end
   resources :users
+
+  post 'vitalo_devices', :to => 'vitalo_devices#create', :as => :vitalo_devices
+
+  resources :vitalo_devices, only: [:show, :create, :update]
 end

@@ -10,6 +10,7 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
+    @vitalo_device = @patient.vitalo_device || VitaloDevice.new(patient_id: @patient.id)
   end
 
   # GET /patients/new
