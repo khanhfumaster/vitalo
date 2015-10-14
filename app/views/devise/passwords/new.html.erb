@@ -1,0 +1,13 @@
+<div class="col-md-4 col-md-offset-4 form-box text-center">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form', :data => {:validate => 'parsley'}}) do |f| %>
+    <h3>Forgot your password?</h3>
+    <p>We'll send password reset instructions.</p>
+    <% resource.errors.full_messages.each do |msg| %>
+      <li class="form-error"><%= msg %></li>
+    <% end %>
+    <div class="form-group">
+      <%= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Email Address', :required => true %>
+    </div>
+     <%= f.submit 'Reset Password', :class => 'btn btn-primary centerize' %>
+  <% end %>
+</div>

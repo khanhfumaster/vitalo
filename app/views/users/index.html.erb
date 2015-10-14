@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h3>User Management</h3>
+      <hr>
+      <table class="table table-striped" id="users-table">
+        <thead>
+          <th>Email Address</th>
+          <th>Last Sign in</th>
+          <th>Role</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <%= render user %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Initialise the user table
+  $('#users-table').dataTable({
+    "aoColumnDefs": [
+      { 'bSortable': false, 'aTargets': [ 3 ] }
+    ],
+    "aLengthMenu": [[25, 50, 100, 200, -1], [25, 50, 100, 200, "All"]],
+    "iDisplayLength": 25
+  });
+
+  // User Role Change AJAX submit
+  $('#user_role').on('change', function(e) {
+    var $form = $(this).parent('form');
+    $.post($form.attr('action'), $form.serialize());
+  })
+</script>
