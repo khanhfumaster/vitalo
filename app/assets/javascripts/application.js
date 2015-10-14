@@ -17,6 +17,8 @@
 //= require parsley
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker-rails
 //= require_tree .
 
 $( document ).ready(function() {

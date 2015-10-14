@@ -1,0 +1,19 @@
+<%= simple_form_for(@patient) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <label for="patient[gender]">Gender</label>
+    <%= f.select(:gender, Patient.genders.keys.map {|gender| [gender.titleize,gender]}, {},{class: 'form-control'}) %>
+    <br>
+
+    <%= f.input :date_of_birth, as: :bootstrap_datepicker, input_html: {class: 'form-control'} %>
+
+    <%= f.input :note %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-default' %>
+    <%= link_to 'Back', @patient.new_record? ? patients_path : @patient, class: 'btn btn-danger' %>
+  </div>
+<% end %>

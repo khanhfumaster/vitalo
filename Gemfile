@@ -22,6 +22,8 @@ gem 'parsley-rails'
 gem 'therubyracer'
 
 gem 'omniauth-facebook'
+gem 'bootstrap-datepicker-rails'
+
 
 group :development do
   gem 'better_errors'
