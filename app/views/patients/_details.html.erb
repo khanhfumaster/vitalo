@@ -1,0 +1,79 @@
+<h2>
+  General Information
+  <%= link_to 'Edit', edit_patient_path(@patient), class: 'btn btn-default' %>
+</h2>
+
+
+
+<table class="table" id="patient-general">
+  <tr>
+    <td><b>Name</b></td>
+    <td><%= @patient.name %></td>
+  </tr>
+
+  <tr>
+    <td><b>Gender</b></td>
+    <td><%= @patient.gender %></td>
+  </tr>
+
+  <tr>
+    <td><b>Date of birth</b></td>
+    <td><%= @patient.date_of_birth %></td>
+  </tr>
+
+  <tr>
+    <td><b>Notes</b></td>
+    <td><%= @patient.note %></td>
+  </tr>
+</table>
+
+<h2>
+  Vitalo Device
+  <%= link_to @patient.vitalo_device.nil? ? 'Register Device':'Update Device', '#', class: 'btn btn-default', onclick: 'registerDevice()' %>
+</h2>
+
+<% if @patient.vitalo_device %>
+  <table class="table" id="patient-device">
+    <tr>
+      <td><b>Model</b></td>
+      <td>Prototype v1.0</td>
+    </tr>
+
+    <tr>
+      <td><b>Serial Number</b></td>
+      <td><%= @vitalo_device.serial_number %></td>
+    </tr>
+
+    <tr>
+      <td><b>Status</b></td>
+      <td><%= @vitalo_device.status || '-' %></td>
+    </tr>
+
+    <tr>
+      <td><b>Last Synced</b></td>
+      <td><%= @vitalo_device.last_synced || '-' %></td>
+    </tr>
+  </table>
+<% else %>
+  <p>Uh oh, looks like <%= @patient.name %> doesn't have a Vitalo device registered.</p>
+<% end %>
+
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Register Device</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'register_device', {:plain => true} %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+  function registerDevice() {
+    $('.modal').modal();
+  }
+</script>

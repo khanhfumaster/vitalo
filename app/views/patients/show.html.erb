@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @patient.name %>
-</p>
+  <h1><%= @patient.name %></h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @patient.user_id %>
-</p>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+    <li role="presentation"><a href="#monitoring" aria-controls="monitoring" role="tab" data-toggle="tab">Monitoring</a></li>
+    <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+  </ul>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @patient.gender %>
-</p>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="details">
+      <%= render 'details' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="monitoring">
+      <%= render 'monitoring' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="history">
+      <%= render 'history' %>
+    </div>
+  </div>
 
-<p>
-  <strong>Note:</strong>
-  <%= @patient.note %>
-</p>
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+</div>
