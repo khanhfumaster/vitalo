@@ -1,4 +1,5 @@
 class VitaloDevicesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_vitalo_device, only: [:show, :update]
 
   def show
