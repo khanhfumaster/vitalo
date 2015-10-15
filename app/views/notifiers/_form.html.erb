@@ -1,0 +1,22 @@
+<%= simple_form_for(@notifier, url: @notifier.new_record? ? vitalo_device_notifiers_path(@vitalo_device) : vitalo_device_notifier_path(@vitalo_device, @notifier)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :vitalo_device_id, as: :hidden %>
+    <label for="notifier[sensor]">Monitor</label>
+    <%= f.select(:sensor, Notifier.sensors.keys.map {|sensor| [sensor.titleize,sensor]}, {},{class: 'form-control'}) %>
+    <%= f.input :threshold_min %>
+    <%= f.input :threshold_max %>
+    <%= f.input :enabled %>
+    <%= f.input :send_email %>
+    <%= f.input :send_app_notification %>
+    <%= f.input :send_sms %>
+    <%= f.input :name %>
+    <%= f.input :note %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <a class="btn btn-danger" onclick="closeBootstrapDialog()">Close</a>
+  </div>
+<% end %>

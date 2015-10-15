@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @notifier.vitalo_device_id %>
+</p>
+
+<p>
+  <strong>Sensor:</strong>
+  <%= @notifier.sensor %>
+</p>
+
+<p>
+  <strong>Enabled:</strong>
+  <%= @notifier.enabled %>
+</p>
+
+<p>
+  <strong>Send email:</strong>
+  <%= @notifier.send_email %>
+</p>
+
+<p>
+  <strong>Send app notification:</strong>
+  <%= @notifier.send_app_notification %>
+</p>
+
+<p>
+  <strong>Send sms:</strong>
+  <%= @notifier.send_sms %>
+</p>
+
+<p>
+  <strong>Threshold min:</strong>
+  <%= @notifier.threshold_min %>
+</p>
+
+<p>
+  <strong>Threshold max:</strong>
+  <%= @notifier.threshold_max %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @notifier.name %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @notifier.note %>
+</p>
+
+<%= link_to 'Edit', edit_vitalo_device_notifier_path(@vitalo_device, @notifier) %> |
+<%= link_to 'Back', vitalo_device_notifiers_path %>

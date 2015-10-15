@@ -8,4 +8,6 @@ class VitaloDevice < ActiveRecord::Base
            class: Reading
   has_many :movement_readings, -> { where sensor: Reading.sensors[:movement]},
            class: Reading
+
+  has_many :notifiers
 end

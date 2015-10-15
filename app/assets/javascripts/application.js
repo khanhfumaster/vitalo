@@ -22,9 +22,19 @@
 //= require_tree .
 
 $( document ).ready(function() {
-  window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-      $(this).fadeOut();
-    });
-  }, 2000);
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).fadeOut();
+        });
+    }, 2000);
 })
+
+function loadRemoteModal(url) {
+    BootstrapDialog.show({
+        message: $('<div></div>').load(url)
+    });
+}
+
+function closeBootstrapDialog() {
+    BootstrapDialog.closeAll();
+}

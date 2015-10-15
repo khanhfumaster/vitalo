@@ -1,0 +1,43 @@
+<h1>Notifiers</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Sensor</th>
+      <th>Enabled</th>
+      <th>Send email</th>
+      <th>Send app notification</th>
+      <th>Send sms</th>
+      <th>Threshold min</th>
+      <th>Threshold max</th>
+      <th>Name</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notifiers.each do |notifier| %>
+      <tr>
+        <td><%= notifier.vitalo_device_id %></td>
+        <td><%= notifier.sensor %></td>
+        <td><%= notifier.enabled %></td>
+        <td><%= notifier.send_email %></td>
+        <td><%= notifier.send_app_notification %></td>
+        <td><%= notifier.send_sms %></td>
+        <td><%= notifier.threshold_min %></td>
+        <td><%= notifier.threshold_max %></td>
+        <td><%= notifier.name %></td>
+        <td><%= notifier.note %></td>
+        <td><%= link_to 'Show', vitalo_device_notifier_path(@vitalo_device, notifier)%></td>
+        <td><%= link_to 'Edit', edit_vitalo_device_notifier_path(@vitalo_device, notifier) %></td>
+        <td><%= link_to 'Destroy', vitalo_device_notifier_path(@vitalo_device, notifier), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Notifier', new_vitalo_device_notifier_path(@vitalo_device) %>

@@ -5,7 +5,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
-    <li role="presentation"><a href="#monitoring" aria-controls="monitoring" role="tab" data-toggle="tab">Monitoring</a></li>
+    <li role="presentation"><a href="#notifiers" aria-controls="notifiers" role="tab" data-toggle="tab">Notifiers</a></li>
     <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
   </ul>
 
@@ -14,8 +14,8 @@
     <div role="tabpanel" class="tab-pane active" id="details">
       <%= render 'details' %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="monitoring">
-      <%= render 'monitoring' %>
+    <div role="tabpanel" class="tab-pane" id="notifiers">
+      <%= render 'notifiers' %>
     </div>
     <div role="tabpanel" class="tab-pane" id="history">
       <%= render 'history' %>
@@ -23,3 +23,17 @@
   </div>
 
 </div>
+
+<script>
+  $(function(){
+    var hash = window.location.hash;
+    hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+    $('.nav-tabs a').click(function (e) {
+      $(this).tab('show');
+      var scrollmem = $('body').scrollTop();
+      window.location.hash = this.hash;
+      $('html,body').scrollTop(scrollmem);
+    });
+  });
+</script>

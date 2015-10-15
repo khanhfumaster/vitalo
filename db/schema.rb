@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015012948) do
+ActiveRecord::Schema.define(version: 20151015034152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "notifiers", force: :cascade do |t|
+    t.integer  "vitalo_device_id"
+    t.integer  "sensor"
+    t.boolean  "enabled",               default: true
+    t.boolean  "send_email"
+    t.boolean  "send_app_notification"
+    t.boolean  "send_sms"
+    t.float    "threshold_min"
+    t.float    "threshold_max"
+    t.string   "name"
+    t.text     "note"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
 
   create_table "patients", force: :cascade do |t|
     t.string   "name"
