@@ -166,7 +166,7 @@ function renderPulseData() {
                         data: data.notifications,
                         onSeries: 'dataseries',
                         shape: 'squarepin',
-                        width: 16
+                        width: 45
                     }
                 ]
             });
@@ -254,7 +254,7 @@ function renderMovementData() {
                         data: data.notifications,
                         onSeries: 'dataseries',
                         shape: 'squarepin',
-                        width: 16
+                        width: 45
                     }
                 ]
             });
