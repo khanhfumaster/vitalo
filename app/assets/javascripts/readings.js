@@ -4,7 +4,7 @@ function renderSpO2Data() {
     $('.btn.active').removeClass('active');
     $('#spo2-btn').addClass('active');
 
-    $.getJSON('http://localhost:3000/readings/chart?device_id='+window.vitalo_device_id+'&sensor=spo2', function (data) {
+    $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=spo2', function (data) {
 
         $('#spo2-chart').highcharts({
             chart: {
@@ -47,7 +47,7 @@ function renderPulseData() {
     $('.btn.active').removeClass('active');
     $('#pulse-btn').addClass('active');
 
-    $.getJSON('http://localhost:3000/readings/chart?device_id='+window.vitalo_device_id+'&sensor=pulse', function (data) {
+    $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=pulse', function (data) {
 
         $('#pulse-chart').highcharts({
             chart: {
@@ -90,7 +90,7 @@ function renderMovementData() {
     $('.btn.active').removeClass('active');
     $('#movement-btn').addClass('active');
 
-    $.getJSON('http://localhost:3000/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
+    $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
 
         $('#movement-chart').highcharts({
             chart: {
