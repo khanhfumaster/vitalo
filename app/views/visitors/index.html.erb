@@ -1,8 +1,95 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <p>Culpa pair programming workflow aute esse agile pitch deck velit proident eu. Est iterate exercitation sticky note Ut incididunt in Duis. Non aute minimum viable product proident cupidatat venture capital grok experiential fugiat ullamco ideate. User story cillum actionable insight ex officia ea convergence ex occaecat long shadow ipsum cillum. Food-truck et convergence physical computing minimum viable product unicorn ea ship it.</p>
-      <p>Sit eu innovate et amet incididunt affordances pivot. Venture capital in reprehenderit ad pitch deck adipisicing actionable insight pitch deck. Intuitive fund sit aliquip pitch deck enim dolor adipisicing user story enim. Sunt Duis waterfall is so 2000 and late ad esse veniam engaging disrupt elit do sticky note ut.</p>
+<div class="homepage-hero-module">
+  <div class="video-container">
+    <div class="title-container">
+      <div class="headline">
+        <h1 class="vitalo-title">Vitalo</h1>
+        <h3 class="text-white text-thin">Set. Wear. Notify.</h3>
+        <div class="login-facebook text-center">
+          <%= link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-social btn-lg btn-facebook' do %>
+            <i class="fa fa-facebook"></i> Sign in with Facebook
+          <% end %>
+        </div>
+      </div>
+
+      <div class="text-center" id="loadBannerVideoSpinner" style="padding: 10px; border-radius: 4px; display: none; margin-top: 20px; background-color: rgba(0, 0, 0, 0.498039);">
+        <h5 class="text-thin text-primary">Loading Vitalo... <i class="fa fa-circle-o-notch fa-spin"></i></h5>
+      </div>
+    </div>
+    <div class="filter"></div>
+    <video autoplay loop class="fillWidth">
+      <source src="/videos/Draw-Something.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+      <source src="/videos/Draw-Something.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+      <source src="/videos/Draw-Something.ogv" type="video/ogv" />Your browser does not support the video tag. I suggest you upgrade your browser.
+    </video>
+    <div class="poster hidden">
+      <img src="/images/Draw-Something.jpg" alt="">
+    </div>
+    <div style="position: absolute; bottom: 10px; right: 50px;">
+      <p class="lead text-center text-white" style="margin-bottom: 10px; font-size: 12px;">Vitalo was made with <i class="fa fa-heart heart-color"></i> by the Vitalo Team of ELEC5622 of 2015</p>
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+
+    scaleVideoContainer();
+
+    initBannerVideoSize('.video-container .poster img');
+    initBannerVideoSize('.video-container .filter');
+    initBannerVideoSize('.video-container video');
+
+    $(window).on('resize', function() {
+      scaleVideoContainer();
+      scaleBannerVideoSize('.video-container .poster img');
+      scaleBannerVideoSize('.video-container .filter');
+      scaleBannerVideoSize('.video-container video');
+    });
+
+  });
+
+  function scaleVideoContainer() {
+
+    var height = $(window).height() + 5;
+    var unitHeight = parseInt(height) + 'px';
+    $('.homepage-hero-module').css('height',unitHeight);
+
+  }
+
+  function initBannerVideoSize(element){
+
+    $(element).each(function(){
+      $(this).data('height', $(this).height());
+      $(this).data('width', $(this).width());
+    });
+
+    scaleBannerVideoSize(element);
+
+  }
+
+  function scaleBannerVideoSize(element){
+
+    var windowWidth = $(window).width(),
+        windowHeight = $(window).height() + 5,
+        videoWidth,
+        videoHeight;
+
+    $(element).each(function(){
+      var videoAspectRatio = $(this).data('height')/$(this).data('width');
+
+      $(this).width(windowWidth);
+
+      if(windowWidth < 1000){
+        videoHeight = windowHeight;
+        videoWidth = videoHeight / videoAspectRatio;
+        $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+
+        $(this).width(videoWidth).height(videoHeight);
+      }
+
+      $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+
+    });
+  }
+</script>

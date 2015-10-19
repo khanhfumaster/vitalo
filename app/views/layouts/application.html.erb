@@ -9,22 +9,28 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+   <% unless @no_nav %>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
+    <% end %>
     <main role="main">
       <div class='wrapper'>
-        <%= render 'layouts/messages' %>
-        <div class="container">
+
+        <% if @no_nav %>
           <%= yield %>
-        </div>
+        <% else %>
+          <%= render 'layouts/messages'%>
+          <div class="container">
+            <%= yield %>
+          </div>
+      <% end %>
+
+
+
+
         <div id="push"></div>
       </div>
     </main>
-    <div id="footer">
-      <div class="footer-contents">
-        ELEC5622 Project
-      </div>
-    </div>
   </body>
 </html>
