@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'vitalo_devices', :to => 'vitalo_devices#create', :as => :vitalo_devices
 
+  post 'readings', :to => 'readings#new', :as => :post_readings
+
   resources :vitalo_devices, only: [:show, :create, :update] do
     resources :notifiers
   end
