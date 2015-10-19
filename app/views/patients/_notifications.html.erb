@@ -1,0 +1,26 @@
+<h2>Notifications</h2>
+
+<table class="table">
+  <thead>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Notifier</th>
+    <th>Message</th>
+    <th>Sensor</th>
+    <th>Reading</th>
+  </thead>
+  <tbody>
+  <% @patient.notifications.each do |notification| %>
+    <tr>
+      <td><%= notification.created_at.strftime('%A, %b %d') %></td>
+      <td><%= notification.created_at.strftime('%I:%M:%S %p') %></td>
+      <td><%= notification.notifier.name || '-' %></td>
+      <td><%= notification.message %></td>
+      <td><%= notification.notifier.sensor %></td>
+      <td><%= notification.reading.value %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

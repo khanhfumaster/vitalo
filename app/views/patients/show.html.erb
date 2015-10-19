@@ -6,6 +6,7 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
     <li role="presentation"><a href="#notifiers" aria-controls="notifiers" role="tab" data-toggle="tab">Notifiers</a></li>
+    <li role="presentation"><a href="#notifications" aria-controls="notifications" role="tab" data-toggle="tab">Notifications</a></li>
     <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
   </ul>
 
@@ -16,6 +17,9 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="notifiers">
       <%= render 'notifiers' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="notifications">
+      <%= render 'notifications' %>
     </div>
     <div role="tabpanel" class="tab-pane" id="history">
       <%= render 'history' %>
