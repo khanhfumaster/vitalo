@@ -11,6 +11,7 @@ class ReadingsController < ApplicationController
     if @vitalo_device
       @reading = @vitalo_device.readings.new(sensor: params[:sensor], value: params[:value])
       if @reading.save
+        @reading.check_notifiers
         render json: {success: true, reading: @reading}
       else
         render json: {success: false}

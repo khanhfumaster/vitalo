@@ -10,4 +10,7 @@ class VitaloDevice < ActiveRecord::Base
            class: Reading
 
   has_many :notifiers
+  has_many :spo2_notifiers, -> { where sensor: Notifier.sensors[:spo2]}, class: Notifier
+  has_many :pulse_notifiers, -> { where sensor: Notifier.sensors[:pulse]}, class: Notifier
+  has_many :movement_notifiers, -> { where sensor: Notifier.sensors[:movement]}, class: Notifier
 end
