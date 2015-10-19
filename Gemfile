@@ -24,7 +24,7 @@ gem 'therubyracer'
 gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
 gem 'websocket-rails'
-gem 'chart-js-rails'
+gem "highcharts-rails", "~> 3.0.0"
 
 group :development do
   gem 'better_errors'

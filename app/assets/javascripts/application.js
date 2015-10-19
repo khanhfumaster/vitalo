@@ -20,10 +20,10 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker-rails
 //= require websocket_rails/main
-//= require Chart
+//= require highcharts
+//= require highcharts/highcharts-more
 //= require_tree .
 
-Chart.defaults.global.responsive = true;
 
 $( document ).ready(function() {
     window.setTimeout(function() {

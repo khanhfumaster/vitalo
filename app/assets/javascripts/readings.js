@@ -1,36 +1,128 @@
 function renderSpO2Data() {
-
+    $('.history-wrapper').hide();
     $('#spo2-wrapper').show()
-    $('#spo2-btn').removeClass('btn-default');
-    $('#spo2-btn').addClass('btn-primary');
+    $('.btn.active').removeClass('active');
+    $('#spo2-btn').addClass('active');
 
-    var ctx = document.getElementById("spo2-chart").getContext("2d");
+    $.getJSON('http://localhost:3000/readings/chart?device_id='+window.vitalo_device_id+'&sensor=spo2', function (data) {
 
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
+        $('#spo2-chart').highcharts({
+            chart: {
+                zoomType: 'x'
             },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
+            title: {
+                text: 'SpO2'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'SpO2'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
 
-    var myLineChart = new Chart(ctx).Line(data);
+            },
+
+            series: [{
+                type: 'spline',
+                name: 'SpO2',
+                data: data
+            }]
+        });
+    });
+}
+
+function renderPulseData() {
+    $('.history-wrapper').hide();
+    $('#pulse-wrapper').show()
+    $('.btn.active').removeClass('active');
+    $('#pulse-btn').addClass('active');
+
+    $.getJSON('http://localhost:3000/readings/chart?device_id='+window.vitalo_device_id+'&sensor=pulse', function (data) {
+
+        $('#pulse-chart').highcharts({
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'Pulse'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Pulse'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+
+            },
+
+            series: [{
+                type: 'spline',
+                name: 'Pulse',
+                data: data
+            }]
+        });
+    });
+}
+
+function renderMovementData() {
+    $('.history-wrapper').hide();
+    $('#movement-wrapper').show()
+    $('.btn.active').removeClass('active');
+    $('#movement-btn').addClass('active');
+
+    $.getJSON('http://localhost:3000/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
+
+        $('#movement-chart').highcharts({
+            chart: {
+                zoomType: 'x'
+            },
+            title: {
+                text: 'Movement'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            yAxis: {
+                title: {
+                    text: 'Movement'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+
+            },
+
+            series: [{
+                type: 'spline',
+                name: 'Movement',
+                data: data
+            }]
+        });
+    });
 }

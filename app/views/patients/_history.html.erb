@@ -1,12 +1,17 @@
+<%= javascript_tag do %>
+  window.vitalo_device_id = <%= raw @vitalo_device.id %>;
+<% end %>
+
+
 <% unless @vitalo_device.new_record? %>
   <%= link_to 'SpO2 Readings', '#history', class:'btn btn-default', id: 'spo2-btn', onclick: 'renderSpO2Data()' %>
-  <%= link_to 'Pulse Readings', '#history', class:'btn btn-default' %>
-  <%= link_to 'Movement Readings', '#history', class:'btn btn-default' %>
+  <%= link_to 'Pulse Readings', '#history', class:'btn btn-default', id: 'pulse-btn', onclick: 'renderPulseData()' %>
+  <%= link_to 'Movement Readings', '#history', class:'btn btn-default', id: 'movement-btn', onclick: 'renderMovementData()' %>
 
   <hr>
 
-  <div id="spo2-wrapper" hidden>
-    <canvas id="spo2-chart"></canvas>
+  <div class="history-wrapper" id="spo2-wrapper" hidden>
+    <div id="spo2-chart" style="width: 100%;"></div>
 
     <table class="table">
       <thead>
@@ -21,9 +26,55 @@
           <td><%= sp02_reading.created_at.strftime('%A, %b %d') %></td>
           <td><%= sp02_reading.created_at.strftime('%I:%M:%S %p') %></td>
           <td><%= sp02_reading.value %></td>
-          <td>est</td>
+          <td></td>
         </tr>
         <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="history-wrapper" id="pulse-wrapper" hidden>
+    <div id="pulse-chart" style="width: 100%;"></div>
+
+    <table class="table">
+      <thead>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Reading</th>
+      <th></th>
+      </thead>
+      <tbody>
+      <% @vitalo_device.pulse_readings.each do |pulse_reading| %>
+        <tr>
+          <td><%= pulse_reading.created_at.strftime('%A, %b %d') %></td>
+          <td><%= pulse_reading.created_at.strftime('%I:%M:%S %p') %></td>
+          <td><%= pulse_reading.value %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="history-wrapper" id="movement-wrapper" hidden>
+    <div id="movement-chart" style="width: 100%;"></div>
+
+    <table class="table">
+      <thead>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Reading</th>
+      <th></th>
+      </thead>
+      <tbody>
+      <% @vitalo_device.movement_readings.each do |movement_reading| %>
+        <tr>
+          <td><%= movement_reading.created_at.strftime('%A, %b %d') %></td>
+          <td><%= movement_reading.created_at.strftime('%I:%M:%S %p') %></td>
+          <td><%= movement_reading.value %></td>
+          <td></td>
+        </tr>
+      <% end %>
       </tbody>
     </table>
   </div>

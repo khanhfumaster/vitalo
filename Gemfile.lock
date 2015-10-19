@@ -60,8 +60,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    chart-js-rails (0.0.9)
-      railties (> 3.1)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
@@ -110,6 +108,8 @@ GEM
       activesupport (>= 4.1.0)
     hashie (3.4.2)
     high_voltage (2.3.0)
+    highcharts-rails (3.0.10)
+      railties (>= 3.1)
     hike (1.2.3)
     hiredis (0.6.0)
     i18n (0.7.0)
@@ -303,7 +303,6 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass
   capybara
-  chart-js-rails
   coffee-rails (~> 4.0.0)
   database_cleaner
   devise
@@ -312,6 +311,7 @@ DEPENDENCIES
   faker
   font-awesome-rails
   high_voltage
+  highcharts-rails (~> 3.0.0)
   jbuilder (~> 2.0)
   jquery-datatables-rails (~> 3.1.1)
   jquery-rails

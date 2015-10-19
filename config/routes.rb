@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'vitalo_devices', :to => 'vitalo_devices#create', :as => :vitalo_devices
 
   post 'readings', :to => 'readings#new', :as => :post_readings
+  get 'readings/chart', :to => 'readings#chart_data', :as => :chart_data
 
   resources :vitalo_devices, only: [:show, :create, :update] do
     resources :notifiers
