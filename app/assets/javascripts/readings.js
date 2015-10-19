@@ -1,6 +1,7 @@
 var spo2Loaded = pulseLoaded = movementLoaded = false;
 
 function renderSpO2Data() {
+    addLoadingOverlay();
     $('.history-wrapper').hide();
     $('#spo2-wrapper').show()
     $('.btn.active').removeClass('active');
@@ -82,13 +83,15 @@ function renderSpO2Data() {
                     }
                 ]
             });
+            removeLoadingOverlay();
         });
+
         spo2Loaded = true;
     }
-
 }
 
 function renderPulseData() {
+    addLoadingOverlay();
     $('.history-wrapper').hide();
     $('#pulse-wrapper').show()
     $('.btn.active').removeClass('active');
@@ -170,18 +173,21 @@ function renderPulseData() {
                     }
                 ]
             });
+            removeLoadingOverlay();
         });
         pulseLoaded = true;
+
     }
 
 }
 
 function renderMovementData() {
+    addLoadingOverlay();
     $('.history-wrapper').hide();
     $('#movement-wrapper').show()
     $('.btn.active').removeClass('active');
-    $('#movement-btn').addClass('active');
 
+    $('#movement-btn').addClass('active');
     if (!movementLoaded) {
         $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
 
@@ -258,8 +264,10 @@ function renderMovementData() {
                     }
                 ]
             });
+            removeLoadingOverlay();
         });
         movementLoaded = true;
-    }
 
+    }
 }
+

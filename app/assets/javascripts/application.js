@@ -44,3 +44,15 @@ function loadRemoteModal(url, title) {
 function closeBootstrapDialog() {
     BootstrapDialog.closeAll();
 }
+
+function addLoadingOverlay() {
+    // add the overlay with loading image to the page
+    var over = '<div id="overlay">' +
+        '<img id="loading" src="/loading.gif">' +
+        '</div>';
+    console.log($('body').append(over))
+};
+
+function removeLoadingOverlay() {
+    $('#overlay').remove();
+}
