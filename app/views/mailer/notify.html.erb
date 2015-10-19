@@ -1,0 +1,13 @@
+Hi <%= @notification.user.name %>,
+
+<%= @notification.patient.name %>'s Vitalo device has triggered the <%= @notification.notifier.name %> notifier.
+
+Details:
+
+<ul>
+  <% @notification.message.split(',').each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+Click this link for access the patient's dashboard: <%= patient_url(@notification.patient) %>

@@ -3,19 +3,18 @@ class Reading < ActiveRecord::Base
   enum sensor: [:spo2, :pulse, :movement]
 
   belongs_to :vitalo_device
+  has_many :notifications
 
   def check_notifiers
     if spo2?
-      check_spo2_notifiers
+      notifiers = vitalo_device.spo2_notifiers.where(enabled: true)
     elsif pulse?
-      check_pulse_notifiers
-    elsif movment?
-      check_movement_notifiers
+      notifiers = vitalo_device.pulse_notifiers.where(enabled: true)
+    elsif movement?
+      notifiers = vitalo_device.movement_notifiers.where(enabled: true)
     end
-  end
 
-  def check_spo2_notifiers
-    vitalo_device.spo2_notifiers.each do |notifier|
+    notifiers.each do |notifier|
 
       messages = []
 
@@ -31,46 +30,7 @@ class Reading < ActiveRecord::Base
         end
       end
 
-
+      notifier.notify(self, messages) if messages.length
     end
   end
-
-  def check_pulse_notifiers
-    vitalo_device.pulse_notifiers.each do |notifier|
-      messages = []
-
-      if notifier.threshold_max.present?
-        if value >= notifier.threshold_max
-          messages.push('Exceeded maximum')
-        end
-      end
-
-      if notifier.threshold_max.present?
-        if value >= notifier.threshold_max
-          messages.push('Below minimum.')
-        end
-      end
-    end
-  end
-
-  def check_movement_notifiers
-    vitalo_device.movement_notifiers.each do |notifier|
-      messages = []
-
-      if notifier.threshold_max.present?
-        if value >= notifier.threshold_max
-          messages.push('Exceeded maximum')
-        end
-      end
-
-      if notifier.threshold_min.present?
-        if value >= notifier.threshold_min
-          messages.push('Below minimum.')
-        end
-      end
-    end
-  end
-
-
-
 end

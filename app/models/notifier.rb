@@ -2,6 +2,7 @@ class Notifier < ActiveRecord::Base
   enum sensor: [:spo2, :pulse, :movement]
 
   belongs_to :vitalo_device
+  has_many :notifications
 
   def thresholds
     vals = []
@@ -18,4 +19,11 @@ class Notifier < ActiveRecord::Base
     methods.join(', ')
   end
 
+  def notify(reading, messages)
+    notification = notifications.create( reading_id: reading.id, message: messages.join(', '),
+                          user_id: vitalo_device.patient.user_id,
+                          patient_id: vitalo_device.patient_id )
+
+    Mailer.notify(notification).deliver
+  end
 end
