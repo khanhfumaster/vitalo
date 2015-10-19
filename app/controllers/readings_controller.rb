@@ -39,7 +39,7 @@ class ReadingsController < ApplicationController
 
       thresholds = []
 
-      @notifiers = @vitalo_device.notifiers.where(sensor: Notifier.sensors[sensor.to_sym])
+      @notifiers = @vitalo_device.notifiers.where(sensor: Notifier.sensors[sensor.to_sym], enabled: true)
 
       @notifiers.each do |notifier|
         color = "#%06x" % (rand * 0xffffff)
