@@ -20,13 +20,13 @@ class Reading < ActiveRecord::Base
 
       if notifier.threshold_max.present?
         if value >= notifier.threshold_max
-          messages.push('Exceeded maximum')
+          messages.push("#{notifier.sensor.titleize} value has exceeded the maximum threshold of #{notifier.threshold_max}")
         end
       end
 
-      if notifier.threshold_max.present?
-        if value >= notifier.threshold_max
-          messages.push('Below minimum.')
+      if notifier.threshold_min.present?
+        if value <= notifier.threshold_min
+          messages.push("#{notifier.sensor.titleize} value has fallen below the minimum threshold of #{notifier.threshold_min}")
         end
       end
 

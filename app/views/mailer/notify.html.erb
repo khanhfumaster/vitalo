@@ -1,13 +1,29 @@
-Hi <%= @notification.user.name %>,
+<p>
+  Hi <%= @notification.user.name %>,
+</p>
 
-<%= @notification.patient.name %>'s Vitalo device has triggered the <%= @notification.notifier.name %> notifier.
+<p>
+  <%= @notification.patient.name %>'s Vitalo device has triggered the <%= @notification.notifier.name %> notifier.
+</p>
 
-Details:
+<h3>Details</h3>
 
+<h4>Readings</h4>
+<ul>
+  <li>Sensor: <%= @notification.reading.sensor %></li>
+  <li>Reading: <%= @notification.reading.value%></li>
+</ul>
+
+<h4>Warnings:</h4>
 <ul>
   <% @notification.message.split(',').each do |message| %>
     <li><%= message %></li>
   <% end %>
 </ul>
 
-Click this link for access the patient's dashboard: <%= patient_url(@notification.patient) %>
+<p>
+  Click this link for access the patient's dashboard: <%= patient_url(@notification.patient) %>
+</p>
+
+Regards,
+The Vitalo Team
