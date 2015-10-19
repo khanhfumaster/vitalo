@@ -1,26 +1,8 @@
 <script>
 
 
-  try {
-    startMock();
-  } catch (e) {
-    console.warn('Failed to connect to websocket server. Trying again...')
-    startMock();
-  }
 
-  function startMock() {
     var serialNumber = '1234765';
-    var dispatcher = new WebSocketRails('localhost:3001/websocket');
-
-    dispatcher.on_open = function(data) {
-      console.log('Connection has been established: ', data);
-      // You can trigger new server events inside this callback if you wish.
-    }
-
-    var channel = dispatcher.subscribe('vitalo:'+serialNumber);
-
-
-
 
     function send_random_readings() {
       console.info('Sendning random reading data')
@@ -42,21 +24,36 @@
         sensor: 'movement'
       }
 
-      dispatcher.trigger('vitalo.store_reading', pulse_reading);
-      dispatcher.trigger('vitalo.store_reading', spo2_reading);
-      dispatcher.trigger('vitalo.store_reading', movement_reading);
+      $.ajax({
+        url: '/readings',
+        method: 'POST',
+        data: spo2_reading,
+        success: function(data) {
+          console.log(data);
+        }
+      })
+
+      $.ajax({
+        url: '/readings',
+        method: 'POST',
+        data: movement_reading,
+        success: function(data) {
+          console.log(data);
+        }
+      })
+
+      $.ajax({
+        url: '/readings',
+        method: 'POST',
+        data: pulse_reading,
+        success: function(data) {
+          console.log(data);
+        }
+      })
+
     }
 
-    channel.bind('store_reading_success', function(task) {
-      console.log('successfully created ' + task);
-    });
-
-    channel.bind('store_reading_failed', function(task) {
-      console.log('successfully created ' + task);
-    });
-
     setInterval(send_random_readings, 1000);
-  }
 
 
 </script>
