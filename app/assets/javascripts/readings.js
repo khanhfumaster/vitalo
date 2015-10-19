@@ -1,13 +1,13 @@
 var spo2Loaded = pulseLoaded = movementLoaded = false;
 
 function renderSpO2Data() {
-    addLoadingOverlay();
     $('.history-wrapper').hide();
     $('#spo2-wrapper').show()
     $('.btn.active').removeClass('active');
     $('#spo2-btn').addClass('active');
 
     if (!spo2Loaded) {
+        addLoadingOverlay();
         $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=spo2', function (data) {
 
             $('#spo2-chart').highcharts("StockChart", {
@@ -91,13 +91,14 @@ function renderSpO2Data() {
 }
 
 function renderPulseData() {
-    addLoadingOverlay();
+
     $('.history-wrapper').hide();
     $('#pulse-wrapper').show()
     $('.btn.active').removeClass('active');
     $('#pulse-btn').addClass('active');
 
     if (!pulseLoaded) {
+        addLoadingOverlay();
         $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=pulse', function (data) {
 
             $('#pulse-chart').highcharts("StockChart", {
@@ -182,13 +183,13 @@ function renderPulseData() {
 }
 
 function renderMovementData() {
-    addLoadingOverlay();
     $('.history-wrapper').hide();
     $('#movement-wrapper').show()
     $('.btn.active').removeClass('active');
 
     $('#movement-btn').addClass('active');
     if (!movementLoaded) {
+        addLoadingOverlay();
         $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
 
             $('#movement-chart').highcharts("StockChart", {
