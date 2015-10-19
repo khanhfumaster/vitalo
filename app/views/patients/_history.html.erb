@@ -1,4 +1,33 @@
 <% unless @vitalo_device.new_record? %>
+  <%= link_to 'SpO2 Readings', '#history', class:'btn btn-default', id: 'spo2-btn', onclick: 'renderSpO2Data()' %>
+  <%= link_to 'Pulse Readings', '#history', class:'btn btn-default' %>
+  <%= link_to 'Movement Readings', '#history', class:'btn btn-default' %>
+
+  <hr>
+
+  <div id="spo2-wrapper" hidden>
+    <canvas id="spo2-chart"></canvas>
+
+    <table class="table">
+      <thead>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Reading</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @vitalo_device.spo2_readings.each do |sp02_reading| %>
+        <tr>
+          <td><%= sp02_reading.created_at.strftime('%A, %b %d') %></td>
+          <td><%= sp02_reading.created_at.strftime('%I:%M:%S %p') %></td>
+          <td><%= sp02_reading.value %></td>
+          <td>est</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
 <% else %>
   <p class="text-center">
     You must first register a Vitalo Device to this patient to see historical readings.

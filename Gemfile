@@ -23,7 +23,8 @@ gem 'therubyracer'
 
 gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
-
+gem 'websocket-rails'
+gem 'chart-js-rails'
 
 group :development do
   gem 'better_errors'

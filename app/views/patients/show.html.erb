@@ -29,10 +29,13 @@
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 
+    if (hash == '#history') renderSpO2Data();
+
     $('.nav-tabs a').click(function (e) {
       $(this).tab('show');
       var scrollmem = $('body').scrollTop();
       window.location.hash = this.hash;
+      if (this.hash == '#history') renderSpO2Data();
       $('html,body').scrollTop(scrollmem);
     });
   });

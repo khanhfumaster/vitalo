@@ -19,7 +19,11 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker-rails
+//= require websocket_rails/main
+//= require Chart
 //= require_tree .
+
+Chart.defaults.global.responsive = true;
 
 $( document ).ready(function() {
     window.setTimeout(function() {
@@ -29,8 +33,10 @@ $( document ).ready(function() {
     }, 2000);
 })
 
-function loadRemoteModal(url) {
+function loadRemoteModal(url, title) {
     BootstrapDialog.show({
+        title: title,
+        size: BootstrapDialog.SIZE_WIDE,
         message: $('<div></div>').load(url)
     });
 }

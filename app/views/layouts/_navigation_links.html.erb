@@ -1,6 +1,7 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
   <li><%= link_to 'Patients', patients_path %></li>
+  <li><%= link_to 'Mock', page_path('mock') %></li>
 <% end %>
 
 

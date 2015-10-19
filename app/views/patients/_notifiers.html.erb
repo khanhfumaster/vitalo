@@ -1,7 +1,7 @@
 <% unless @vitalo_device.new_record? %>
   <h2>
     Notifiers
-    <%= link_to 'New Notifier', '#notifier', class: 'btn btn-default', onclick: "loadRemoteModal('#{new_vitalo_device_notifier_path(@vitalo_device)}')" %>
+    <%= link_to 'New Notifier', '#notifier', class: 'btn btn-default', onclick: "loadRemoteModal('#{new_vitalo_device_notifier_path(@vitalo_device)}', 'New Notifier')" %>
   </h2>
   <table class="table">
     <thead>
@@ -23,7 +23,7 @@
           <td><%= notifier.notification_methods %></td>
           <td><%= notifier.note %></td>
           <td>
-            <%= link_to 'Edit', '#notifier', class: 'btn btn-default btn-xs', onclick: "loadRemoteModal('#{edit_vitalo_device_notifier_path(@vitalo_device, notifier)}')" %>
+            <%= link_to 'Edit', '#notifier', class: 'btn btn-default btn-xs', onclick: "loadRemoteModal('#{edit_vitalo_device_notifier_path(@vitalo_device, notifier)}', 'Edit Notifier')" %>
             <%= link_to 'Destroy', vitalo_device_notifier_path(@vitalo_device, notifier), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
           </td>
         </tr>
