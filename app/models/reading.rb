@@ -3,7 +3,7 @@ class Reading < ActiveRecord::Base
   enum sensor: [:spo2, :pulse, :movement]
 
   belongs_to :vitalo_device
-  has_many :notifications
+  has_one :notification
 
   def check_notifiers
     if spo2?

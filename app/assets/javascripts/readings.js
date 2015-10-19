@@ -66,11 +66,21 @@ function renderSpO2Data() {
                     }
                 },
 
-                series: [{
-                    type: 'area',
-                    name: 'SpO2',
-                    data: data.results
-                }]
+                series: [
+                    {
+                        type: 'area',
+                        name: 'SpO2',
+                        id: 'dataseries',
+                        data: data.results
+                    },
+                    {
+                        type: 'flags',
+                        data: data.notifications,
+                        onSeries: 'dataseries',
+                        shape: 'squarepin',
+                        width: 45
+                    }
+                ]
             });
         });
         spo2Loaded = true;
@@ -144,11 +154,21 @@ function renderPulseData() {
                     }
                 },
 
-                series: [{
-                    type: 'area',
-                    name: 'Pulse',
-                    data: data.results
-                }]
+                series: [
+                    {
+                        type: 'area',
+                        name: 'Pulse',
+                        id: 'dataseries',
+                        data: data.results
+                    },
+                    {
+                        type: 'flags',
+                        data: data.notifications,
+                        onSeries: 'dataseries',
+                        shape: 'squarepin',
+                        width: 16
+                    }
+                ]
             });
         });
         pulseLoaded = true;
@@ -222,11 +242,21 @@ function renderMovementData() {
                     }
                 },
 
-                series: [{
-                    type: 'area',
-                    name: 'Movement',
-                    data: data.results
-                }]
+                series: [
+                    {
+                        type: 'area',
+                        name: 'Movement',
+                        id: 'dataseries',
+                        data: data.results
+                    },
+                    {
+                        type: 'flags',
+                        data: data.notifications,
+                        onSeries: 'dataseries',
+                        shape: 'squarepin',
+                        width: 16
+                    }
+                ]
             });
         });
         movementLoaded = true;
