@@ -20,8 +20,8 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker-rails
 //= require websocket_rails/main
-//= require highcharts
-//= require highcharts/highcharts-more
+//= require highstock
+//= require highstock/highcharts-more
 //= require_tree .
 
 

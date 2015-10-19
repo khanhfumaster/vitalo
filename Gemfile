@@ -25,6 +25,8 @@ gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
 gem 'websocket-rails'
 gem "highcharts-rails", "~> 3.0.0"
+gem 'highstock-rails'
+gem 'faker'
 
 group :development do
   gem 'better_errors'

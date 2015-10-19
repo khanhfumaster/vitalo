@@ -1,44 +1,81 @@
+var spo2Loaded = pulseLoaded = movementLoaded = false;
+
 function renderSpO2Data() {
     $('.history-wrapper').hide();
     $('#spo2-wrapper').show()
     $('.btn.active').removeClass('active');
     $('#spo2-btn').addClass('active');
 
-    $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=spo2', function (data) {
+    if (!spo2Loaded) {
+        $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=spo2', function (data) {
 
-        $('#spo2-chart').highcharts({
-            chart: {
-                zoomType: 'x'
-            },
-            title: {
-                text: 'SpO2'
-            },
-            subtitle: {
-                text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
-            },
-            xAxis: {
-                type: 'datetime'
-            },
-            yAxis: {
+            $('#spo2-chart').highcharts("StockChart", {
+                rangeSelector: {
+                    allButtonsEnabled: true,
+                    selected: 0
+                },
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    zoomType: 'x'
+                },
                 title: {
                     text: 'SpO2'
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            plotOptions: {
+                },
+                subtitle: {
+                    text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                },
+                xAxis: {
+                    type: 'datetime'
+                },
+                yAxis: {
+                    title: {
+                        text: 'SpO2'
+                    },
+                    plotLines: data.thresholds
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            radius: 2
+                        },
+                        lineWidth: 1,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        threshold: null
+                    }
+                },
 
-            },
-
-            series: [{
-                type: 'spline',
-                name: 'SpO2',
-                data: data
-            }]
+                series: [{
+                    type: 'area',
+                    name: 'SpO2',
+                    data: data.results
+                }]
+            });
         });
-    });
+        spo2Loaded = true;
+    }
+
 }
 
 function renderPulseData() {
@@ -47,41 +84,76 @@ function renderPulseData() {
     $('.btn.active').removeClass('active');
     $('#pulse-btn').addClass('active');
 
-    $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=pulse', function (data) {
+    if (!pulseLoaded) {
+        $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=pulse', function (data) {
 
-        $('#pulse-chart').highcharts({
-            chart: {
-                zoomType: 'x'
-            },
-            title: {
-                text: 'Pulse'
-            },
-            subtitle: {
-                text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
-            },
-            xAxis: {
-                type: 'datetime'
-            },
-            yAxis: {
+            $('#pulse-chart').highcharts("StockChart", {
+                rangeSelector: {
+                    allButtonsEnabled: true,
+                    selected: 0
+                },
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    zoomType: 'x'
+                },
                 title: {
                     text: 'Pulse'
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            plotOptions: {
+                },
+                subtitle: {
+                    text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                },
+                xAxis: {
+                    type: 'datetime'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Pulse'
+                    },
+                    plotLines: data.thresholds
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            radius: 2
+                        },
+                        lineWidth: 1,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        threshold: null
+                    }
+                },
 
-            },
-
-            series: [{
-                type: 'spline',
-                name: 'Pulse',
-                data: data
-            }]
+                series: [{
+                    type: 'area',
+                    name: 'Pulse',
+                    data: data.results
+                }]
+            });
         });
-    });
+        pulseLoaded = true;
+    }
+
 }
 
 function renderMovementData() {
@@ -90,39 +162,74 @@ function renderMovementData() {
     $('.btn.active').removeClass('active');
     $('#movement-btn').addClass('active');
 
-    $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
+    if (!movementLoaded) {
+        $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
 
-        $('#movement-chart').highcharts({
-            chart: {
-                zoomType: 'x'
-            },
-            title: {
-                text: 'Movement'
-            },
-            subtitle: {
-                text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
-            },
-            xAxis: {
-                type: 'datetime'
-            },
-            yAxis: {
+            $('#movement-chart').highcharts("StockChart", {
+                rangeSelector: {
+                    allButtonsEnabled: true,
+                    selected: 0
+                },
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    zoomType: 'x'
+                },
                 title: {
                     text: 'Movement'
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            plotOptions: {
+                },
+                subtitle: {
+                    text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                },
+                xAxis: {
+                    type: 'datetime'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Movement'
+                    },
+                    plotLines: data.thresholds
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            radius: 2
+                        },
+                        lineWidth: 1,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        threshold: null
+                    }
+                },
 
-            },
-
-            series: [{
-                type: 'spline',
-                name: 'Movement',
-                data: data
-            }]
+                series: [{
+                    type: 'area',
+                    name: 'Movement',
+                    data: data.results
+                }]
+            });
         });
-    });
+        movementLoaded = true;
+    }
+
 }

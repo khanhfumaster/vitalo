@@ -26,13 +26,27 @@ class ReadingsController < ApplicationController
 
     if @vitalo_device
       results = []
-      @readings = @vitalo_device.readings.where(sensor: sensor).order(created_at: :asc)
+      @readings = @vitalo_device.readings.where(sensor: Reading.sensors[sensor.to_sym]).order(created_at: :asc)
 
       @readings.each do |reading|
         results.push([reading.created_at.to_f * 1000, reading.value])
       end
 
-      render json: results
+
+      thresholds = []
+
+      @notifiers = @vitalo_device.notifiers.where(sensor: Notifier.sensors[sensor.to_sym])
+
+      p @notifiers
+
+      @notifiers.each do |notifier|
+        color = "#%06x" % (rand * 0xffffff)
+        thresholds.push({color: color, value: notifier.threshold_min, width: 2, zIndex: 9999, label: {text: "#{notifier.name} minimum", align: 'right'}}) unless notifier.threshold_min.nil?
+        thresholds.push({color: color, value: notifier.threshold_max, width: 2, zIndex: 9999, label: {text: "#{notifier.name} maximum", align: 'right'}}) unless notifier.threshold_max.nil?
+      end
+
+
+      render json: {results: results, thresholds: thresholds}
     else
       render json: {success: false}
     end

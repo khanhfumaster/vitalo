@@ -11,72 +11,18 @@
   <hr>
 
   <div class="history-wrapper" id="spo2-wrapper" hidden>
+    <h2>SpO2 Readings</h2>
     <div id="spo2-chart" style="width: 100%;"></div>
-
-    <table class="table">
-      <thead>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Reading</th>
-        <th></th>
-      </thead>
-      <tbody>
-        <% @vitalo_device.spo2_readings.each do |sp02_reading| %>
-        <tr>
-          <td><%= sp02_reading.created_at.strftime('%A, %b %d') %></td>
-          <td><%= sp02_reading.created_at.strftime('%I:%M:%S %p') %></td>
-          <td><%= sp02_reading.value %></td>
-          <td></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
   </div>
 
   <div class="history-wrapper" id="pulse-wrapper" hidden>
+    <h2>Pulse Readings</h2>
     <div id="pulse-chart" style="width: 100%;"></div>
-
-    <table class="table">
-      <thead>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Reading</th>
-      <th></th>
-      </thead>
-      <tbody>
-      <% @vitalo_device.pulse_readings.each do |pulse_reading| %>
-        <tr>
-          <td><%= pulse_reading.created_at.strftime('%A, %b %d') %></td>
-          <td><%= pulse_reading.created_at.strftime('%I:%M:%S %p') %></td>
-          <td><%= pulse_reading.value %></td>
-          <td></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
   </div>
 
   <div class="history-wrapper" id="movement-wrapper" hidden>
+    <h2>Movement Readings</h2>
     <div id="movement-chart" style="width: 100%;"></div>
-
-    <table class="table">
-      <thead>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Reading</th>
-      <th></th>
-      </thead>
-      <tbody>
-      <% @vitalo_device.movement_readings.each do |movement_reading| %>
-        <tr>
-          <td><%= movement_reading.created_at.strftime('%A, %b %d') %></td>
-          <td><%= movement_reading.created_at.strftime('%I:%M:%S %p') %></td>
-          <td><%= movement_reading.value %></td>
-          <td></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
   </div>
 
 <% else %>
