@@ -30,7 +30,7 @@ class Reading < ActiveRecord::Base
         end
       end
 
-      notifier.notify(self, messages) if messages.length
+      notifier.notify(self, messages) if messages.count > 0
     end
   end
 end
