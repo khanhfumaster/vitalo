@@ -9,7 +9,21 @@ img {
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
-  }
+  width: 100px;
+  margin-left: 0px;
+  background: transparent url(/logo_brand.png) no-repeat left 7px top 7px;
+  display: inline-block;
+  text-indent: 0%;
+  white-space: nowrap;
+  overflow: visible;
+  padding-right: 0;
+  padding-left: 50px !important;
+  text-align: left;
+  color: #FFF !important;
+  text-shadow: none;
+  text-decoration: none;
+  font-weight: 400;
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes

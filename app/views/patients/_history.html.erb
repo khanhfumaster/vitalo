@@ -1,5 +1,6 @@
 <%= javascript_tag do %>
   window.vitalo_device_id = <%= raw @vitalo_device.id %>;
+  window.spo2Loaded = window.pulseLoaded = window.movementLoaded = false;
 <% end %>
 
 

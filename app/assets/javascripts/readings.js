@@ -1,12 +1,10 @@
-var spo2Loaded = pulseLoaded = movementLoaded = false;
-
 function renderSpO2Data() {
     $('.history-wrapper').hide();
     $('#spo2-wrapper').show()
     $('.btn.active').removeClass('active');
     $('#spo2-btn').addClass('active');
 
-    if (!spo2Loaded) {
+    if (!window.spo2Loaded) {
         addLoadingOverlay();
         $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=spo2', function (data) {
 
@@ -97,7 +95,7 @@ function renderPulseData() {
     $('.btn.active').removeClass('active');
     $('#pulse-btn').addClass('active');
 
-    if (!pulseLoaded) {
+    if (!window.pulseLoaded) {
         addLoadingOverlay();
         $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=pulse', function (data) {
 
@@ -188,7 +186,7 @@ function renderMovementData() {
     $('.btn.active').removeClass('active');
 
     $('#movement-btn').addClass('active');
-    if (!movementLoaded) {
+    if (!window.movementLoaded) {
         addLoadingOverlay();
         $.getJSON('/readings/chart?device_id='+window.vitalo_device_id+'&sensor=movement', function (data) {
 
