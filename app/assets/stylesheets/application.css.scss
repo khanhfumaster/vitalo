@@ -93,3 +93,31 @@ li.form-error {
   left: 50%;
   margin: -28px 0 0 -25px;
 }
+
+a {
+  color: #17baef;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #17baef;
+  border-color: #0da3ef;
+}
+
+.bootstrap-dialog.type-primary .modal-header {
+  background-color: #17baef;
+}
+
+.navbar {
+  background-color: #17baef;
+  border-radius: 0px;
+}
+
+.navbar a {
+  color: #ffffff;
+}
+
+.navbar a:hover, .navbar a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: #17baef !important;
+  color: white !important;
+}
