@@ -25,6 +25,19 @@ img {
   font-weight: 400;
 }
 
+.navbar {
+  background-color: #17baef;
+}
+
+.navbar a {
+  color: #ffffff;
+}
+
+.navbar a:hover, .navbar a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: #17baef !important;
+  color: white !important;
+}
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
