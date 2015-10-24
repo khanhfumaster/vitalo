@@ -51,7 +51,7 @@ class ReadingsController < ApplicationController
     if @vitalo_device
       results = []
       notifications = []
-      @readings = @vitalo_device.readings.where(sensor: Reading.sensors[sensor.to_sym]).order(created_at: :asc)
+      @readings = @vitalo_device.readings.where(sensor: Reading.sensors[sensor.to_sym]).order(created_at: :asc).includes(:notification)
 
       @readings.each do |reading|
         results.push([reading.created_at.to_f * 1000, reading.value])
