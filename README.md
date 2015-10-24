@@ -1,6 +1,8 @@
 Vitalo (Manangement System)
 ================
 
+- [Developer Setup](https://github.com/khanh2907/vitalo/wiki/Developer-Setup)
+
 ## Background
 Vitalo is near real-time comfortable and convenient telemetry platform for kids with chronic illnesses and rare disorders. The objective of Vitalo is to create a robust, mobile, everyday-use medical monitoring device for children with severe chronic illnesses and rare disorders that is light-weight and unobtrusive, and provides accurate, real-time telemetry of pulse, oxygen saturation and symptomatic movement. A device whose data is accessible by parents, caregivers and physicians on existing mobile devices and desktop computers, unlike currently available devices, which have been designed for clinical applications and tend to be bulky, require direct visual monitoring and need to be returned to a clinician in order for meaningful data to be extracted and analyzed.
 
