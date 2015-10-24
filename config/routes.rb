@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   post 'readings', :to => 'readings#new', :as => :post_readings
   get 'readings/chart', :to => 'readings#chart_data', :as => :chart_data
 
+  get 'notifications', :to => 'readings#notifications', :as => :notification_data
+
+  get 'data', :to => 'readings#current_reading'
+
+
   resources :vitalo_devices, only: [:show, :create, :update] do
     resources :notifiers
   end

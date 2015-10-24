@@ -18,6 +18,30 @@ class ReadingsController < ApplicationController
     end
   end
 
+  def notifications
+    user_id = params[:id]
+
+    user = User.find(user_id)
+
+    if user
+      n = user.notifications.select(:message, :created_at, :id)
+      render json: n
+    else
+      render json: {success: false}
+    end
+  end
+
+  def current_reading
+    device = VitaloDevice.find_by_serial_number(params[:serial_number])
+
+    if device
+      render json: {pulse: device.pulse_readings.last.value, spo2: device.spo2_readings.last.value, movement: device.movement_readings.last.value}
+    else
+      render json: {success: false}
+    end
+
+  end
+
   def chart_data
     device_id = params[:device_id]
     sensor = params[:sensor]
