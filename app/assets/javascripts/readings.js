@@ -81,6 +81,106 @@ function renderSpO2Data() {
                     }
                 ]
             });
+
+            $('#spo2-daily-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Daily SpO2 Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'SpO2'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Daily Average",
+                    "data": data.daily_average
+                }]
+            });
+
+            $('#spo2-weekly-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Weekly SpO2 Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'SpO2'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Weekly Average",
+                    "data": data.weekly_average
+                }]
+            });
+
+            $('#spo2-monthly-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Monthly SpO2 Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'SpO2'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Monthly Average",
+                    "data": data.monthly_average
+                }]
+            });
+
             removeLoadingOverlay();
         });
 
@@ -172,6 +272,106 @@ function renderPulseData() {
                     }
                 ]
             });
+
+            $('#pulse-daily-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Daily Pulse Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Pulse'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Daily Average",
+                    "data": data.daily_average
+                }]
+            });
+
+            $('#pulse-weekly-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Weekly Pulse Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Pulse'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Weekly Average",
+                    "data": data.weekly_average
+                }]
+            });
+
+            $('#pulse-monthly-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Monthly Pulse Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'SpO2'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Monthly Average",
+                    "data": data.monthly_average
+                }]
+            });
+
             removeLoadingOverlay();
         });
         pulseLoaded = true;
@@ -263,6 +463,106 @@ function renderMovementData() {
                     }
                 ]
             });
+
+            $('#movement-daily-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Daily Movement Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Movement'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Daily Average",
+                    "data": data.daily_average
+                }]
+            });
+
+            $('#movement-weekly-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Weekly Movement Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Movement'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Weekly Average",
+                    "data": data.weekly_average
+                }]
+            });
+
+            $('#movement-monthly-chart').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Monthly Movement Average'
+                },
+                xAxis: {
+                    "type": "datetime",
+                    "minTickInterval": 86400000,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Movement'
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    "name": "Monthly Average",
+                    "data": data.monthly_average
+                }]
+            });
+
             removeLoadingOverlay();
         });
         movementLoaded = true;
