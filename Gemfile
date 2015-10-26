@@ -23,7 +23,6 @@ gem 'therubyracer'
 
 gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
-gem 'websocket-rails'
 gem "highcharts-rails", "~> 3.0.0"
 gem 'highstock-rails'
 gem 'bootstrap-social-rails'

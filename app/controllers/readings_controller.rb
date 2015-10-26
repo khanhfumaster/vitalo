@@ -24,7 +24,7 @@ class ReadingsController < ApplicationController
     user = User.find(user_id)
 
     if user
-      n = user.notifications.select(:message, :created_at, :id)
+      n = user.notifications.select(:message, :created_at, :id).last
       render json: n
     else
       render json: {success: false}

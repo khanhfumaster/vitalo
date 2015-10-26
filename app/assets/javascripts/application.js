@@ -19,7 +19,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker-rails
-//= require websocket_rails/main
 //= require highstock
 //= require highstock/highcharts-more
 //= require_tree .
