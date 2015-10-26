@@ -118,9 +118,9 @@ class ReadingsController < ApplicationController
       pulse = []
       movement = []
 
-      spo2_readings = @vitalo_device.spo2_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)])
-      pulse_readings = @vitalo_device.pulse_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)])
-      movement_readings = @vitalo_device.movement_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)])
+      spo2_readings = @vitalo_device.spo2_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)]).order(created_at: :asc)
+      pulse_readings = @vitalo_device.pulse_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)]).order(created_at: :asc)
+      movement_readings = @vitalo_device.movement_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)]).order(created_at: :asc)
 
       spo2_readings.each do |reading|
         spo2.push([reading.created_at.to_f * 1000, reading.value])
@@ -147,15 +147,15 @@ class ReadingsController < ApplicationController
       pulse = []
       movement = []
 
-      @vitalo_device.spo2_readings.each do |reading|
+      @vitalo_device.spo2_readings.order(created_at: :asc).each do |reading|
         spo2.push([reading.created_at.to_f * 1000, reading.value])
       end
 
-      @vitalo_device.pulse_readings.each do |reading|
+      @vitalo_device.pulse_readings.order(created_at: :asc).each do |reading|
         pulse.push([reading.created_at.to_f * 1000, reading.value])
       end
 
-      @vitalo_device.movement_readings.each do |reading|
+      @vitalo_device.movement_readings.order(created_at: :asc).each do |reading|
         movement.push([reading.created_at.to_f * 1000, reading.value])
       end
 
