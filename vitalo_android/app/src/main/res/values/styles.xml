@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <!--<item name="android:background">@drawable/theme_bar</item>-->
+        <item name="android:windowBackground">@drawable/theme_bar</item>
+    </style>
+
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_backgroud">
+    <TextView
+        android:id="@+id/tvNOTES"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:text="Notes" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="166dp"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editTextMulti" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/buttonSave"
+            android:layout_weight="0.26"
+            android:layout_marginLeft="50dp"
+            android:onClick="onSubmit"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/buttonCancel"
+            android:layout_marginLeft="70dp"
+            android:layout_weight="0.20"
+            android:onClick="onCancel"/>
+    </LinearLayout>
+
+</LinearLayout>

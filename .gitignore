@@ -77,3 +77,4 @@ pickle-email-*.html
 .env
 .powenv
 dump.rdb
+vitalo_android/app/libs
