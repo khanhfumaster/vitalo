@@ -5,6 +5,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+    <li role="presentation"><a href="#monitor" aria-controls="monitor" role="tab" data-toggle="tab">Monitor</a></li>
     <li role="presentation"><a href="#notifiers" aria-controls="notifiers" role="tab" data-toggle="tab">Notifiers</a></li>
     <li role="presentation"><a href="#notifications" aria-controls="notifications" role="tab" data-toggle="tab">Notifications</a></li>
     <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
@@ -14,6 +15,9 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="details">
       <%= render 'details' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="monitor">
+      <%= render 'monitor' %>
     </div>
     <div role="tabpanel" class="tab-pane" id="notifiers">
       <%= render 'notifiers' %>
@@ -34,12 +38,14 @@
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 
     if (hash == '#history') renderSpO2Data();
+    if (hash == '#monitor') loadMonitor();
 
     $('.nav-tabs a').click(function (e) {
       $(this).tab('show');
       var scrollmem = $('body').scrollTop();
       window.location.hash = this.hash;
       if (this.hash == '#history') renderSpO2Data();
+      if (this.hash == '#monitor') loadMonitor();
       $('html,body').scrollTop(scrollmem);
     });
   });

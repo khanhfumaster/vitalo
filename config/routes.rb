@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   post 'readings', :to => 'readings#new', :as => :post_readings
   get 'readings/chart', :to => 'readings#chart_data', :as => :chart_data
 
+  get 'readings/monitor', :to => 'readings#monitor', :as => :monitor
+
+  get 'readings/monitor_chart', :to => 'readings#monitor_chart', :as => :monitor_chart
+
+
   get 'notifications', :to => 'readings#notifications', :as => :notification_data
 
   get 'data', :to => 'readings#current_reading'

@@ -105,6 +105,65 @@ class ReadingsController < ApplicationController
       render json: {success: false}
     end
   end
+
+  def monitor
+    device_id = params[:device_id]
+    time = params[:time]
+    time_f = time.to_f
+
+    @vitalo_device = VitaloDevice.find(device_id)
+
+    if @vitalo_device
+      spo2 = []
+      pulse = []
+      movement = []
+
+      spo2_readings = @vitalo_device.spo2_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)])
+      pulse_readings = @vitalo_device.pulse_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)])
+      movement_readings = @vitalo_device.movement_readings.where(["created_at >= ?", Time.at(time_f / 1000.0)])
+
+      spo2_readings.each do |reading|
+        spo2.push([reading.created_at.to_f * 1000, reading.value])
+      end
+      pulse_readings.each do |reading|
+        pulse.push([reading.created_at.to_f * 1000, reading.value])
+      end
+      movement_readings.each do |reading|
+        movement.push([reading.created_at.to_f * 1000, reading.value])
+      end
+      render json: {success: true, spo2: spo2, pulse: pulse, movement: movement}
+    else
+      render json: {success: false}
+    end
+
+  end
+
+  def monitor_chart
+    device_id = params[:device_id]
+    @vitalo_device = VitaloDevice.find(device_id)
+
+    if @vitalo_device
+      spo2 = []
+      pulse = []
+      movement = []
+
+      @vitalo_device.spo2_readings.each do |reading|
+        spo2.push([reading.created_at.to_f * 1000, reading.value])
+      end
+
+      @vitalo_device.pulse_readings.each do |reading|
+        pulse.push([reading.created_at.to_f * 1000, reading.value])
+      end
+
+      @vitalo_device.movement_readings.each do |reading|
+        movement.push([reading.created_at.to_f * 1000, reading.value])
+      end
+
+      render json: {success: true, spo2: spo2, pulse: pulse, movement: movement}
+    else
+      render json: {success: false}
+    end
+  end
 end
 
 

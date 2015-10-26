@@ -570,3 +570,82 @@ function renderMovementData() {
     }
 }
 
+function loadMonitor() {
+    $.getJSON('/readings/monitor_chart?device_id='+window.vitalo_device_id, function (data) {
+        window.lastPoll = Date.now();
+        $('#monitor-spo2-chart').highcharts('StockChart', {
+            chart : {
+                events : {
+                    load : function () {
+
+                        // set up the updating of the chart each second
+                        var spo2Series = this.series[0];
+                        var pulseSeries = this.series[1];
+                        var movementSeries = this.series[2];
+                        setInterval(function () {
+
+                            $.getJSON('/readings/monitor?device_id='+window.vitalo_device_id+'&time='+window.lastPoll, function(d) {
+                                window.lastPoll = Date.now();
+
+                                for (var i = 0; i < d.spo2.length; i++) {
+                                    spo2Series.addPoint(d.spo2[i], true, true);
+                                }
+
+                                for (var i = 0; i < d.pulse.length; i++) {
+                                    pulseSeries.addPoint(d.pulse[i], true, true);
+                                }
+
+                                for (var i = 0; i < d.movement.length; i++) {
+                                    movementSeries.addPoint(d.movement[i], true, true);
+                                }
+                            })
+
+
+                        }, 1000);
+
+
+                    }
+                }
+            },
+            legend: {
+                enabled: true
+            },
+            rangeSelector: {
+                buttons: [{
+                    count: 1,
+                    type: 'minute',
+                    text: '1M'
+                }, {
+                    count: 5,
+                    type: 'minute',
+                    text: '5M'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                inputEnabled: false,
+                selected: 0
+            },
+
+            title : {
+                text : 'Monitor'
+            },
+
+            exporting: {
+                enabled: false
+            },
+
+            series : [{
+                name : 'SpO2',
+                data: data.spo2
+            },{
+                name : 'Pulse',
+                data: data.pulse
+            },{
+                name : 'Movement',
+                data: data.movement
+            }]
+        });
+    })
+}
+
